@@ -1,0 +1,28 @@
+h1 {
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+.search-history {
+    border-color: red;
+    border-style: solid;
+    position: relative;
+    width: 200px;
+}
+
+.city-weather {
+    border-color: blue;
+    border-style: solid;
+    position: relative;
+    width: 200px;
+    left: 25em;
+}
+
+.forecast {
+    border-color: green;
+    border-style: solid;
+    position: relative;
+    width: 200px;
+    left: 50em;
+}
