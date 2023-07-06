@@ -4,25 +4,30 @@ h1 {
     text-align: center;
 }
 
-.search-history {
+#search-history {
     border-color: red;
     border-style: solid;
     position: relative;
     width: 200px;
+    height: 200px;
 }
 
-.city-weather {
+#current-weather {
     border-color: blue;
     border-style: solid;
     position: relative;
     width: 200px;
-    left: 25em;
+    height: 200px;
+    left: 200px;
 }
 
-.forecast {
+#forecast {
     border-color: green;
     border-style: solid;
     position: relative;
     width: 200px;
-    left: 50em;
+    height: 200px;
+    left: 200px;
 }
+
+/*add media queries for cards so they stack on top of each other when screen is small*/

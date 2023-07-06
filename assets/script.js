@@ -17,6 +17,9 @@ var weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?';
 var geocoderUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 var userSearch = document.getElementById("search-bar");
 var searchBtn = document.getElementById("search-btn");
+var searchHistory = document.getElementById("search-history"); // position search history list under search bar
+var currentWeather = document.getElementById("current-weather"); // current weather will be displayed to the top right of the search bar
+var forcastWeather = document.getElementById("forcast-weather"); // forcast weather will be displayed below the current weather
 
 searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
