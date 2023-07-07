@@ -4,30 +4,39 @@ h1 {
     text-align: center;
 }
 
+
 #search-history {
     border-color: red;
     border-style: solid;
     position: relative;
-    width: 200px;
     height: 200px;
 }
 
 #current-weather {
     border-color: blue;
     border-style: solid;
-    position: relative;
-    width: 200px;
     height: 200px;
-    left: 200px;
 }
 
 #forecast {
     border-color: green;
     border-style: solid;
-    position: relative;
-    width: 200px;
     height: 200px;
-    left: 200px;
 }
 
 /*add media queries for cards so they stack on top of each other when screen is small*/
+
+@media screen and (max-width: 480px) {
+    #container  {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 481px) {
+    #container {
+        width: 50%;
+    }
+}
