@@ -16,6 +16,7 @@ var APIkey = 'f4a839de064f3f8c4b41ed9b785c2131';
 var weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?';
 var geocoderUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 var userSearch = document.getElementById("search-bar");
+var resultBox = document.getElementById("result-box"); // position search results under search bar
 var searchBtn = document.getElementById("search-btn");
 var searchHistory = document.getElementById("search-history"); // position search history list under search bar
 var currentWeather = document.getElementById("current-weather"); // current weather will be displayed to the top right of the search bar
@@ -32,7 +33,8 @@ searchBtn.addEventListener('click', function(event) {
 function getWeatherAPI() {
     // fetch from Geocoder API
     var search = userSearch.value;
-    var url1 = geocoderUrl + search + '&appid=' + APIkey;
+    var url1 = geocoderUrl + search + '&limit=5' +'&appid=' + APIkey; // added limit=5 to only show 5 recommended cities
+    // if city name has multiple results, display all results under search bar. pull city name, state, and country code from Geocoder API
     console.log(url1)
     console.log(search)
     fetch(url1).then(function(response) {
@@ -40,7 +42,15 @@ function getWeatherAPI() {
         
         // place second fetch for OpenWeather API within fetch for Geocoder API
     }) .then(function(data) {
-        console.log(data[0].lat) // data[0].lat & data[0].lon are the lat & lon for the city searched
+        // console.log(data)
+        // console.log(data[1].lat) // data[0].lat & data[0].lon are the lat & lon for the city searched (only shows one result)
+
+        var citySearchResults = data.values();
+        for (let city of citySearchResults) {
+            var citySearchList = document.createElement("li");
+            citySearchList.textContent = city.name + ', ' + city.state + ', ' + city.country;
+            resultBox.appendChild(citySearchList);
+        }
 
         var lat = data[0].lat;
         var lon = data[0].lon;
@@ -49,7 +59,7 @@ function getWeatherAPI() {
         fetch(url2).then(function(response) {
             return response.json();
         }) .then(function(data) {
-            console.log(data);
+            //console.log(data);
             // temperature is in Kelvin, need to convert to F
             // time displayed is in UTC, need to convert to local time list.dt. actually dt_txt displays the date & time
         })
