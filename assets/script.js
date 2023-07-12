@@ -21,11 +21,25 @@ var searchBtn = document.getElementById("search-btn");
 var searchHistory = document.getElementById("search-history"); // position search history list under search bar
 var currentWeather = document.getElementById("current-weather"); // current weather will be displayed to the top right of the search bar
 var forcastWeather = document.getElementById("forcast-weather"); // forcast weather will be displayed below the current weather
+var cityList = [];
+
+function saveCities(){
+    var savedCities = JSON.parse(localStorage.getItem('cityList')); // store searched cities in local storage
+
+    if (savedCities !== null) {
+        cityList = savedCities;
+        
+    }
+}
+
 
 searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     var search = userSearch.value
+    localStorage.setItem("cityList", JSON.stringify(search)); // store searched cities in local storage
+    searchHistory.textContent = search;
+    
     //console.log(search)
     getWeatherAPI(search);
 });
@@ -45,12 +59,14 @@ function getWeatherAPI() {
         // console.log(data)
         // console.log(data[1].lat) // data[0].lat & data[0].lon are the lat & lon for the city searched (only shows one result)
 
+        /* 
         var citySearchResults = data.values();
         for (let city of citySearchResults) {
             var citySearchList = document.createElement("li");
             citySearchList.textContent = city.name + ', ' + city.state + ', ' + city.country;
             resultBox.appendChild(citySearchList);
-        }
+        }  
+        */
 
         var lat = data[0].lat;
         var lon = data[0].lon;
@@ -66,3 +82,5 @@ function getWeatherAPI() {
     });
     // define parameters to add to fetch url, store lat & lon as variables to use in OpenWeather API
 }
+
+saveCities(); // run local storage function at startup
