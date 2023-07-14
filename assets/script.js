@@ -3,8 +3,6 @@
 
 // find parameters for city name, date, temperature, humidity, wind speed, icons, and the date
 
-// lat & lon can be pulled from Geocoder API, need to store lat & lon as variables to use in OpenWeather API
-
 // since city names can be the same explore having search bar show recommended cities based on what is typed in the search bar
 
 // Create five-day forecast cards
@@ -23,17 +21,31 @@ var currentWeather = document.getElementById("current-weather"); // current weat
 var forcastWeather = document.getElementById("forcast-weather"); // forcast weather will be displayed below the current weather
 var cityList = []; // save searched cities to local storage in an array
 
-
 function initializePage() { // initialize page with search history from local storage
     var savedCities = JSON.parse(localStorage.getItem('cityList'));
 
     if (savedCities !== null) {
         cityList = savedCities;
     }
+    
+    renderCityList(cityList);
 }
 
-function saveCityList() {
-    localStorage.setItem("cityList", JSON.stringify(cityList)); // store searched cities in local storage
+function saveCityList() { // store searched cities in local storage
+    localStorage.setItem("cityList", JSON.stringify(cityList)); 
+}
+
+
+function renderCityList() {
+// create function that renders search history list from local storage
+    searchHistory.innerHTML = "";
+    for (var i = 0; i < cityList.length; i++) {
+        var city = document.createElement("button");
+        city.setAttribute("class", "saved-city");
+        city.textContent = cityList[i];
+        searchHistory.appendChild(city);
+    }
+
 }
 
 searchBtn.addEventListener('click', function(event) {
@@ -47,7 +59,8 @@ searchBtn.addEventListener('click', function(event) {
     getWeatherAPI(search);
 });
 
-function getWeatherAPI() {
+function getWeatherAPI() { // lat & lon can be pulled from Geocoder API, need to store lat & lon as variables to use in OpenWeather API
+
     // fetch from Geocoder API
     var search = userSearch.value;
     var url1 = geocoderUrl + search + '&limit=5' +'&appid=' + APIkey; // added limit=5 to only show 5 recommended cities
