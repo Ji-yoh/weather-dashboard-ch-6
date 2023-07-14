@@ -12,6 +12,13 @@ h1 {
     height: 200px;
 }
 
+button.saved-city {
+    display: block;
+    margin: 0;
+    width: 25%;
+    max-width: 50%; 
+}
+
 #current-weather {
     border-color: blue;
     border-style: solid;

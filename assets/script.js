@@ -3,11 +3,7 @@
 
 // find parameters for city name, date, temperature, humidity, wind speed, icons, and the date
 
-// since city names can be the same explore having search bar show recommended cities based on what is typed in the search bar
-
 // Create five-day forecast cards
-
-// Save search history to local storage and display in search history, list items are clickable and will display the weather for that city
 
 var APIkey = 'f4a839de064f3f8c4b41ed9b785c2131';
 // added dummy lat & lon to test API
@@ -32,12 +28,16 @@ function initializePage() { // initialize page with search history from local st
 }
 
 function saveCityList() { // store searched cities in local storage
+    cityList.unshift(userSearch.value);
+    if (cityList.length > 5) {
+        cityList.pop();
+    }
+
     localStorage.setItem("cityList", JSON.stringify(cityList)); 
 }
 
 
-function renderCityList() {
-// create function that renders search history list from local storage
+function renderCityList() { // create function that renders search history list from local storage, buttons should be clickable to display weather for that city
     searchHistory.innerHTML = "";
     for (var i = 0; i < cityList.length; i++) {
         var city = document.createElement("button");
@@ -52,7 +52,6 @@ searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     var search = userSearch.value
-    cityList.push(search);
 
     saveCityList();
     //console.log(search)
