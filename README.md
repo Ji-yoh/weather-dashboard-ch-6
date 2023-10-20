@@ -34,6 +34,7 @@ THEN I am again presented with current and future conditions for that city
 ````
 
 ## Screenshot
-[Screenshot](./assets/screenshot.png)
+![Screenshot](./assets/screenshot.png)
 
 ## Deployed URL
+[GH pages](https://ji-yoh.github.io/weather-dashboard-ch-6/)
