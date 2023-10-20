@@ -6,7 +6,6 @@ h1 {
 
 
 #search-history {
-    border-color: red;
     border-style: solid;
     position: relative;
     height: 200px;
@@ -20,13 +19,15 @@ button.saved-city {
 }
 
 #current-weather {
-    border-color: blue;
     border-style: solid;
     height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #forecast {
-    border-color: green;
     border-style: solid;
     height: 200px;
 }

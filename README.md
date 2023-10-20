@@ -1,5 +1,8 @@
 # weather-dashboard-ch-6
 
+## Description
+A weather dashboard app that calls the OpenWeather API to display weather information for searched cities. Built using vanilla Javascript and utilizing DOM manipulation. Work in progress and will develop further. 
+
 ## User Story
 ````
 AS A traveler
@@ -31,5 +34,6 @@ THEN I am again presented with current and future conditions for that city
 ````
 
 ## Screenshot
+[Screenshot](./assets/screenshot.png)
 
 ## Deployed URL
